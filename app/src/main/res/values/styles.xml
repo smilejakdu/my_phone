@@ -1,0 +1,21 @@
+<resources>
+
+    <style name="BaseApp" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="coll_expand_title">
+        <item name="android:textColor">@color/colorGrin</item>
+    </style>
+
+    <style name="coll_basic_title">
+        <item name="android:textColor">@color/colorGrin</item>
+    </style>
+
+    <style name="coll_main_basic_title">
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+</resources>
