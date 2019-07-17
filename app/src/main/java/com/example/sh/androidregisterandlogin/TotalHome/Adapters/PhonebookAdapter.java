@@ -46,6 +46,7 @@ public class PhonebookAdapter extends BaseRecyclerViewAdapter<AddressData, Phone
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int position) {
         ItemPhonebookBinding binding = ItemPhonebookBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
         final ViewHolder viewHolder = new ViewHolder(binding);
+
         binding.constraintMain.setOnClickListener(v -> {
             AddressData phonenumber = getItem(viewHolder.getAdapterPosition());
             if (phonenumber == null) {

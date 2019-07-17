@@ -53,8 +53,8 @@ public class MusicPlayer extends AppCompatActivity implements View.OnClickListen
             getAudioListFromMediaDatabase();
         }
         binding.btnPlayPause.setOnClickListener(this);
-        findViewById(R.id.btn_rewind).setOnClickListener(this);
-        findViewById(R.id.btn_forward).setOnClickListener(this);
+        binding.btnRewind.setOnClickListener(this);
+        binding.btnForward.setOnClickListener(this);
         mAdapter = new AudioAdapter(this, null);
         updateUI();
     } // onCreate 끝나는 부분

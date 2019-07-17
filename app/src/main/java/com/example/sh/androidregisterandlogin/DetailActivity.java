@@ -66,7 +66,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_go_buy_favorite:
-                Intent linkIntent = new Intent();
+                Intent linkIntent = new Intent(); // 링크에 대한 intent
                 linkIntent.setAction(Intent.ACTION_VIEW);
                 linkIntent.setData(uri);
                 if (linkIntent.resolveActivity(getPackageManager()) != null) {

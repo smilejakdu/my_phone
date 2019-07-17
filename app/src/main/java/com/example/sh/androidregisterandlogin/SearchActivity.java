@@ -99,6 +99,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
             }
         });
         search_word_play();
+
     }
 
     private void search_word_play() {
