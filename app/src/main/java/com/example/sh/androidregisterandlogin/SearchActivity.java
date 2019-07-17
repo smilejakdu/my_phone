@@ -62,6 +62,8 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     int displayValue = 100;
     int startValue = 1;
     String sortType = "sim";
+    String test;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +74,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         customLayoutManager = new CustomLayoutManager(this);
         itemList = new ArrayList<>();
 //        listTypeAdapter = new ListTypeAdapter(this, itemList, Glide.with(this));
-        listTypeAdapter = new ListTypeAdapter( itemList);
+        listTypeAdapter = new ListTypeAdapter(itemList);
         binding.rcv.setAdapter(listTypeAdapter);
         binding.rcv.setLayoutManager(customLayoutManager);
         binding.rcv.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -300,6 +302,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         DBHelper helper = new DBHelper(this, DATABASE_NAME, null, DATABASE_VERSION);
         helper.getWritableDatabase();
     }
+
     //back버튼을 3초 내에 두 번 누르면 종료되도록 함.
     @Override
     public void onBackPressed() {
