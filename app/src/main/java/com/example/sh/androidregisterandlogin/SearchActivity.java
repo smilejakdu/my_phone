@@ -62,8 +62,6 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     int displayValue = 100;
     int startValue = 1;
     String sortType = "sim";
-    String test;
-    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,9 +98,20 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                 }
             }
         });
+        search_word_play();
+    }
+
+    private void search_word_play() {
+        Intent intent = getIntent();
+        String search_word = intent.getStringExtra("search_word_result");
+        Log.d("search_word", "search_word_play: " + search_word);
+        goSearch();
+        binding.etQuery.setText(search_word);
+
     }
 
     public void initView() {
+
         binding.rbSim.setChecked(true);
         binding.rgs.setOnCheckedChangeListener((group, checkedId) -> {
             switch (checkedId) {
@@ -252,7 +261,16 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
     public void goSearch() {
         //검색데이터 가져오기!!
-        queryString = binding.etQuery.getText().toString();
+        Intent intent = getIntent();
+        String search_word = intent.getStringExtra("search_word_result");
+
+        if (search_word != null) {
+            Log.d("queryString", "여기로 들어오나요 ??");
+            queryString = search_word;
+            Log.d("queryString", "goSearch: " + queryString);
+        } else {
+            queryString = binding.etQuery.getText().toString();
+        }
         binding.pb.setVisibility(View.VISIBLE);
         if (queryString.equals("")) {
             Toast.makeText(SearchActivity.this, "검색어를 입력하세요", Toast.LENGTH_SHORT).show();

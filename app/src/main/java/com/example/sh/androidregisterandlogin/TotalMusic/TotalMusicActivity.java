@@ -79,7 +79,6 @@ public class TotalMusicActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void musicSelectPlay() {
-        Log.d("start123", "musicSelectPlay: 여기로 들어올려나 ??? ");
         Intent intent = getIntent();
 //       노래 제목없이 그냥 음악 실행할 경우
         int start = intent.getIntExtra("music_start", 0);
@@ -88,7 +87,7 @@ public class TotalMusicActivity extends AppCompatActivity implements View.OnClic
             AudioApplication.getInstance().getServiceInterface().voice_togglePlay();
         }
 //       노래 제목을 얘기했을 경우
-        String music_title = intent.getStringExtra("music_title");
+        String music_title = intent.getStringExtra("music_title"); // 노래 제목
         Log.d("TotalMusicActivity.qwer", "music_title : " + music_title);
         String title = "노래";
         String title2 = "음악";

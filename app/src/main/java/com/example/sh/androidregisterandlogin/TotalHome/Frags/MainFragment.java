@@ -270,10 +270,13 @@ public class MainFragment extends Fragment {
                             .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
 
                     binding.speechInputTxt.setText(result.get(0));  //분홍색 글씨
+
                     String voice_result = binding.speechInputTxt.getText().toString();   // 이렇게적으면 안녕으로 바뀌게 된다 .
                     String text, text1 = "안녕", test2 = "누구야";
                     String app = "어플", battry = "배터리", music = "음악", music2 = "오디오", music3 = "노래";
                     String music_start1 = "음악재생", music_start2 = "노래재생", music_title_start = "틀어줘";
+                    String search_word1 = "검색";
+
                     String result1 = voice_result.trim().replaceAll(" ", "");
                     if (result1.replaceAll(" ", "").contains(text1) || result1.contains(test2)) {
                         text = "네 안녕하세요. 저는 혀니 입니다.";
@@ -302,6 +305,11 @@ public class MainFragment extends Fragment {
                         startActivity(intent);
                     } else if (result1.contains(music) || result1.contains(music2) || result1.contains(music3)) {
                         Intent intent = new Intent(getContext(), TotalMusicActivity.class);
+                        startActivity(intent);
+                    } else if (result1.contains(search_word1)) {
+                        Intent intent = new Intent(getContext(), SearchActivity.class);
+                        String search_word_result = result1.replaceAll("검색해줘", "").replaceAll("검색", "");
+                        intent.putExtra("search_word_result", search_word_result);
                         startActivity(intent);
                     }
                 }
