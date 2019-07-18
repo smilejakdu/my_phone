@@ -14,8 +14,4 @@
         android:id="@+id/m_phone_search"
         android:icon="@drawable/ic_text_fields_black_24dp"
         android:title="@string/menu_search" />
-    <item
-        android:id="@+id/m_phone_support_money"
-        android:icon="@drawable/ic_text_fields_black_24dp"
-        android:title="@string/menu_support_money" />
 </menu>

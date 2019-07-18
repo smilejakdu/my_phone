@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import com.example.sh.androidregisterandlogin.TotalHome.Frags.MainFragment;
@@ -19,6 +20,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity {
     private ActivityCollectionBinding binding;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,16 +48,14 @@ public class HomeActivity extends AppCompatActivity {
                     changeScreen(itemId, SearchFragment.newInstance());
                     return true;
                 }
-                case R.id.m_phone_support_money: {
-                    changeScreen(itemId, PhoneBookFragment.newInstance());
-                    return true;
-                }
                 default: {
                     return false;
                 }
             }
         });
     }
+
+
 
 
     public void changeScreen(int itemId, Fragment fragment) {

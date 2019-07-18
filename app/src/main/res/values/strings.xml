@@ -51,6 +51,7 @@
     <string name="activity_message_user_name">name</string>
     <string name="fragment_message_count">메세지 개수 :</string>
     <string name="affordable_price">affordable price</string>
-    <string name="menu_search">검색</string>
+    <string name="menu_search">상품검색</string>
     <string name="menu_support_money">공시지원금</string>
+    <string name="title_activity_main">MainActivity</string>
 </resources>

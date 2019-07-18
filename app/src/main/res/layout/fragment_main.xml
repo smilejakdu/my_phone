@@ -124,6 +124,18 @@
                     android:layout_height="300dp"
                     android:src="@drawable/intro_phone" />
 
+                <Button
+                    android:id="@+id/btn_map"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="30sp"
+                    android:layout_marginBottom="30sp"
+                    android:background="@color/colorWhite"
+                    android:drawableTop="@drawable/google"
+                    android:text="오시는 길" />
+
+
                 <TextView
                     android:id="@+id/speech_input_txt"
                     android:layout_width="wrap_content"

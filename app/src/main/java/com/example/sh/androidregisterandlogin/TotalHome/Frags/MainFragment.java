@@ -34,6 +34,7 @@ import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.sh.androidregisterandlogin.MapActivity;
 import com.example.sh.androidregisterandlogin.R;
 import com.example.sh.androidregisterandlogin.SearchActivity;
 import com.example.sh.androidregisterandlogin.TotalApp.UserAppsActivity;
@@ -94,6 +95,10 @@ public class MainFragment extends Fragment {
 
         binding.ivSearchMove.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), SearchActivity.class);
+            startActivity(intent);
+        });
+        binding.btnMap.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), MapActivity.class);
             startActivity(intent);
         });
     }
