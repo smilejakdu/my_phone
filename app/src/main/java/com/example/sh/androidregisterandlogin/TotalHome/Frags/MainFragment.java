@@ -2,7 +2,6 @@ package com.example.sh.androidregisterandlogin.TotalHome.Frags;
 
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -41,10 +40,11 @@ import com.example.sh.androidregisterandlogin.TotalApp.UserAppsActivity;
 import com.example.sh.androidregisterandlogin.TotalBattery.BatteryActivity;
 import com.example.sh.androidregisterandlogin.TotalHome.Adapters.MainAdapter;
 import com.example.sh.androidregisterandlogin.TotalHome.Adapters.PhonePriceAdapter;
+import com.example.sh.androidregisterandlogin.TotalHome.Datas.MainDataItem;
 import com.example.sh.androidregisterandlogin.TotalHome.Datas.PhonePriceDataItem;
 import com.example.sh.androidregisterandlogin.TotalMusic.TotalMusicActivity;
-import com.example.sh.androidregisterandlogin.TotalHome.Datas.MainDataItem;
 import com.example.sh.androidregisterandlogin.databinding.FragmentMainBinding;
+import com.github.clans.fab.FloatingActionMenu;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 import org.jsoup.Jsoup;
@@ -53,7 +53,9 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -65,6 +67,12 @@ public class MainFragment extends Fragment {
     private ArrayList<MainDataItem> mainDataItemList = new ArrayList<>();
     private final int REQ_CODE_SPEECH_INPUT = 100;
     public TextToSpeech tts;
+    FloatingActionMenu quickFloatingMenu;
+
+    //오늘날짜가져오기
+    SimpleDateFormat mmonth = new SimpleDateFormat("YYYY-MM-dd");
+    long mNow;
+    Date mDate;
 
     private ArrayList<PhonePriceDataItem> phonePriceList = new ArrayList();
     private ProgressDialog progressDialog;
@@ -93,7 +101,7 @@ public class MainFragment extends Fragment {
         initRcv(binding.rcvMain);
         new AsyncTaskTest().execute();
 
-        binding.ivSearchMove.setOnClickListener(v -> {
+        binding.llSearchMove.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), SearchActivity.class);
             startActivity(intent);
         });
@@ -101,6 +109,18 @@ public class MainFragment extends Fragment {
             Intent intent = new Intent(getContext(), MapActivity.class);
             startActivity(intent);
         });
+
+        binding.quickFloatingActionMenuAdd.setOnClickListener(v -> {
+            Toast.makeText(getContext(), "첫번째 선택", Toast.LENGTH_SHORT).show();
+
+        });
+
+        binding.quickFloatingActionVoice.setOnClickListener(v -> {
+            promptSpeechInput();
+            Toast.makeText(getContext(), "음성 선택", Toast.LENGTH_SHORT).show();
+        });
+
+        binding.tvSupportDay.setText(getToday());
     }
 
     private void initRcv(RecyclerView rcv) {
@@ -110,6 +130,7 @@ public class MainFragment extends Fragment {
         rcv.setHasFixedSize(true);
         rcv.setAdapter(adapter);
     }
+
 
     class AsyncTaskTest extends AsyncTask<Void, Void, Void> {
 
@@ -234,17 +255,6 @@ public class MainFragment extends Fragment {
         return filteredModelList;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            Toast.makeText(getContext(), "Settings", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.action_voice) {
-            Toast.makeText(getContext(), "Voice", Toast.LENGTH_SHORT).show();
-            promptSpeechInput();
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
     private void promptSpeechInput() {
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
@@ -367,5 +377,12 @@ public class MainFragment extends Fragment {
 
             }
         });
+    }
+
+    //현재 월 가져오기
+    private String getToday() {
+        mNow = System.currentTimeMillis();
+        mDate = new Date(mNow);
+        return mmonth.format(mDate);
     }
 }

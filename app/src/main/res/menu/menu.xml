@@ -8,12 +8,12 @@
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="always|collapseActionView" />
 
-    <!--other menu items here-->
-    <item
-        android:id="@+id/action_settings"
-        android:title="Settings" />
-    <item
-        android:id="@+id/action_voice"
-        android:title="tell me " />
+    <!--&lt;!&ndash;other menu items here&ndash;&gt;-->
+    <!--<item-->
+        <!--android:id="@+id/action_settings"-->
+        <!--android:title="Settings" />-->
+    <!--<item-->
+        <!--android:id="@+id/action_voice"-->
+        <!--android:title="tell me " />-->
 
 </menu>

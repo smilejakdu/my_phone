@@ -103,4 +103,7 @@ dependencies {
     //qr_code
     implementation 'com.journeyapps:zxing-android-embedded:3.4.0'
 
+    //fab
+    implementation 'com.github.clans:fab:1.6.2'
+
 }

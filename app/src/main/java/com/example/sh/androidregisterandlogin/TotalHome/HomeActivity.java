@@ -1,18 +1,15 @@
 package com.example.sh.androidregisterandlogin.TotalHome;
 
 import android.app.AlertDialog;
-
-import androidx.databinding.DataBindingUtil;
-
-import androidx.fragment.app.Fragment;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.ProgressDialog;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
+
+import com.example.sh.androidregisterandlogin.R;
 import com.example.sh.androidregisterandlogin.TotalHome.Frags.MainFragment;
 import com.example.sh.androidregisterandlogin.TotalHome.Frags.PhoneBookFragment;
-import com.example.sh.androidregisterandlogin.R;
 import com.example.sh.androidregisterandlogin.TotalHome.Frags.SearchFragment;
 import com.example.sh.androidregisterandlogin.databinding.ActivityCollectionBinding;
 import com.example.sh.androidregisterandlogin.util.ActivityUtils;

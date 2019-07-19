@@ -1,11 +1,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/tools">
 
     <data>
 
 
     </data>
-
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/main_content"
@@ -50,8 +50,9 @@
                 app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -59,25 +60,47 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="15dp"
                         android:gravity="start"
-                        android:text="Search"
+                        android:text="Support Money"
+                        android:textColor="#000000"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+                    <TextView
+                        android:id="@+id/tv_support_day"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="15dp"
+                        android:gravity="start"
+                        android:text="Support_day"
                         android:textColor="#000000"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
                     <LinearLayout
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:gravity="right"
-                        android:orientation="horizontal">
+                        android:id="@+id/ll_search_move"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:gravity="right|center"
+                        android:orientation="vertical">
 
                         <ImageView
-                            android:id="@+id/iv_search_move"
-                            android:layout_width="40dp"
-                            android:layout_height="30dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="right|center"
                             android:layout_marginRight="10sp"
-                            android:src="@drawable/ic_magnifier" />
+                            android:src="@drawable/ic_magnifier"
+                            android:text="Search" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Search"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -135,7 +158,6 @@
                     android:drawableTop="@drawable/google"
                     android:text="오시는 길" />
 
-
                 <TextView
                     android:id="@+id/speech_input_txt"
                     android:layout_width="wrap_content"
@@ -144,6 +166,41 @@
                     android:visibility="gone" />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
+        <com.github.clans.fab.FloatingActionMenu
+            android:id="@+id/quick_floating_action_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="282dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="end|bottom"
+            android:layout_marginBottom="200px"
+            android:visibility="visible"
+            app:menu_colorNormal="@color/colorGrin"
+            app:menu_colorPressed="@color/colorTransParent"
+            app:menu_fab_size="normal"
+            app:menu_icon="@drawable/ic_add">
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/quick_floating_action_menu_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_add"
+                app:fabSize="normal"
+                app:fab_colorNormal="@color/colorGrin"
+                app:fab_label="세팅" />
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/quick_floating_action_voice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/microphone"
+                app:fabSize="normal"
+                app:fab_colorNormal="@color/colorTransParent"
+                app:fab_label="음성" />
+
+        </com.github.clans.fab.FloatingActionMenu>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

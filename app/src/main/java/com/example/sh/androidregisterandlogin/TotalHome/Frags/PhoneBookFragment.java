@@ -169,17 +169,6 @@ public class PhoneBookFragment extends Fragment {
         });
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-//        다른 메뉴 항목 클릭을 여기에서 처리하십시오.
-        if (id == R.id.action_settings) {
-            Toast.makeText(getContext(), "Settings", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.action_voice) {
-            Toast.makeText(getContext(), "Voice", Toast.LENGTH_SHORT).show();
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
     private List<AddressData> filter(List<AddressData> p1, String query) {
         query = query.toLowerCase();
