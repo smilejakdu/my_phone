@@ -12,15 +12,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.sh.androidregisterandlogin.SearchUtil.CustomLayoutManager;
-import com.example.sh.androidregisterandlogin.SearchUtil.DBHelper;
 import com.example.sh.androidregisterandlogin.SearchUtil.Items;
 import com.example.sh.androidregisterandlogin.SearchUtil.NaverShoppingSearchService;
 import com.example.sh.androidregisterandlogin.SearchUtil.SearchDataList;
@@ -41,9 +43,6 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static com.example.sh.androidregisterandlogin.SearchUtil.DBHelper.DATABASE_NAME;
-import static com.example.sh.androidregisterandlogin.SearchUtil.DBHelper.DATABASE_VERSION;
-
 public class SearchActivity extends AppCompatActivity implements View.OnClickListener, SwipeRefreshLayout.OnRefreshListener {
     private ActivitySearchBinding binding;
 
@@ -62,6 +61,8 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     int displayValue = 100;
     int startValue = 1;
     String sortType = "sim";
+    String select_item;
+    ArrayList arraylist = new ArrayList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +70,10 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         binding = DataBindingUtil.setContentView(this, R.layout.activity_search);
 
         initView();
+        setSupportActionBar(binding.tbBack);
+        setTitle("U&Soft Company");
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
         customLayoutManager = new CustomLayoutManager(this);
         itemList = new ArrayList<>();
 //        listTypeAdapter = new ListTypeAdapter(this, itemList, Glide.with(this));
@@ -99,6 +104,8 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
             }
         });
         search_word_play();
+        spinnerSort();
+
 
     }
 
@@ -111,31 +118,56 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
     }
 
-    public void initView() {
+    public void spinnerSort() {
+        arraylist.add("유사도 순");
+        arraylist.add("최저가 순");
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, arraylist);
+        binding.spinnerSort.setAdapter(adapter);
+        binding.spinnerSort.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                select_item = String.valueOf(arraylist.get(position));
+                switch (select_item) {
+                    case "유사도 순":
+                        try {
+                            if (!binding.etQuery.getText().toString().isEmpty()) {
 
-        binding.rbSim.setChecked(true);
-        binding.rgs.setOnCheckedChangeListener((group, checkedId) -> {
-            switch (checkedId) {
-                case R.id.rb_sim:
-                    if (!binding.etQuery.getText().toString().isEmpty()) {
-                        binding.rcv.scrollToPosition(0);
-                        Toast.makeText(SearchActivity.this, "검색어와 유사한 물품을 검색합니다.", Toast.LENGTH_SHORT).show();
-                        sortType = "sim";
-                        clearData();
-                        setRetrofit(queryString);
-                    }
-                    break;
-                case R.id.rbp:
-                    if (!binding.etQuery.getText().toString().isEmpty()) {
-                        binding.rcv.scrollToPosition(0);
-                        Toast.makeText(SearchActivity.this, "최저가 순으로 검색합니다.", Toast.LENGTH_SHORT).show();
-                        sortType = "asc";
-                        clearData();
-                        setRetrofit(queryString);
-                    }
-                    break;
+                                binding.rcv.scrollToPosition(0);
+                                Toast.makeText(SearchActivity.this, "검색어와 유사한 물품을 검색합니다.", Toast.LENGTH_SHORT).show();
+                                sortType = "sim";
+                                clearData();
+                                setRetrofit(queryString);
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        break;
+
+                    case "최저가 순":
+                        try {
+                            if (!binding.etQuery.getText().toString().isEmpty()) {
+
+                                binding.rcv.scrollToPosition(0);
+                                Toast.makeText(SearchActivity.this, "최저가 순으로 검색합니다.", Toast.LENGTH_SHORT).show();
+                                sortType = "asc";
+                                clearData();
+                                setRetrofit(queryString);
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
+    }
+
+    public void initView() {
 
         binding.ibSearch.setOnClickListener(this);
         binding.pb.setVisibility(View.GONE);
@@ -303,43 +335,12 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.goFavorite:
-                createDatabase();
-                Intent favoriteIntent = new Intent(SearchActivity.this, FavoriteActivity.class);
-                if (favoriteIntent.resolveActivity(getPackageManager()) != null) {
-                    startActivity(favoriteIntent);
-                } else {
-                    Toast.makeText(this, "다시 시도해 주세요.", Toast.LENGTH_SHORT).show();
-                }
-                break;
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                onBackPressed();
+                return true;
         }
-        return true;
-    }
-
-    public void createDatabase() {
-        database = openOrCreateDatabase(DATABASE_NAME, MODE_PRIVATE, null);
-        DBHelper helper = new DBHelper(this, DATABASE_NAME, null, DATABASE_VERSION);
-        helper.getWritableDatabase();
-    }
-
-    //back버튼을 3초 내에 두 번 누르면 종료되도록 함.
-    @Override
-    public void onBackPressed() {
-
-        if (pressedTime == 0) {
-            Toast.makeText(SearchActivity.this, "한 번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show();
-            pressedTime = System.currentTimeMillis();
-        } else {
-            seconds = System.currentTimeMillis() - pressedTime;
-
-            if (seconds > 3000) {
-                Toast.makeText(SearchActivity.this, "한 번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show();
-                pressedTime = 0;
-            } else {
-                super.onBackPressed();
-                finish();
-            }
-        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

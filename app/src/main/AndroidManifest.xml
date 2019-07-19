@@ -64,7 +64,8 @@
         <activity android:name=".TotalBattery.BatteryActivity" />
         <activity android:name=".TotalMemory.MemoryActivity" />
         <activity android:name=".TotalPhoneInfo.PhoneInfoActivity" />
-        <activity android:name=".SearchActivity" />
+        <activity
+            android:name=".SearchActivity"
+            android:parentActivityName=".TotalHome.HomeActivity" />
     </application>
-
 </manifest>

@@ -44,7 +44,6 @@ import com.example.sh.androidregisterandlogin.TotalHome.Datas.MainDataItem;
 import com.example.sh.androidregisterandlogin.TotalHome.Datas.PhonePriceDataItem;
 import com.example.sh.androidregisterandlogin.TotalMusic.TotalMusicActivity;
 import com.example.sh.androidregisterandlogin.databinding.FragmentMainBinding;
-import com.github.clans.fab.FloatingActionMenu;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 import org.jsoup.Jsoup;
@@ -67,7 +66,6 @@ public class MainFragment extends Fragment {
     private ArrayList<MainDataItem> mainDataItemList = new ArrayList<>();
     private final int REQ_CODE_SPEECH_INPUT = 100;
     public TextToSpeech tts;
-    FloatingActionMenu quickFloatingMenu;
 
     //오늘날짜가져오기
     SimpleDateFormat mmonth = new SimpleDateFormat("YYYY-MM-dd");
@@ -101,11 +99,26 @@ public class MainFragment extends Fragment {
         initRcv(binding.rcvMain);
         new AsyncTaskTest().execute();
 
+        ClickFunction();
+        binding.tvSupportDay.setText(getToday());
+
+    }
+
+
+    private void initRcv(RecyclerView rcv) {
+        adapter = new MainAdapter(getModels());
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        rcv.setLayoutManager(linearLayoutManager);
+        rcv.setHasFixedSize(true);
+        rcv.setAdapter(adapter);
+    }
+
+    public void ClickFunction() {
         binding.llSearchMove.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), SearchActivity.class);
             startActivity(intent);
         });
-        binding.ivMap.setOnClickListener(v -> {
+        binding.llMap.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), MapActivity.class);
             startActivity(intent);
         });
@@ -121,16 +134,6 @@ public class MainFragment extends Fragment {
             Toast.makeText(getContext(), "음성 선택", Toast.LENGTH_SHORT).show();
             binding.quickFloatingActionMenu.close(true);
         });
-
-        binding.tvSupportDay.setText(getToday());
-    }
-
-    private void initRcv(RecyclerView rcv) {
-        adapter = new MainAdapter(getModels());
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-        rcv.setLayoutManager(linearLayoutManager);
-        rcv.setHasFixedSize(true);
-        rcv.setAdapter(adapter);
     }
 
 

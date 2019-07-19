@@ -15,6 +15,18 @@
         android:background="#33f1f1f1"
         tools:context="com.kimjinhwan.android.naverapi.SearchActivity">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tb_back"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorGrin"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_search"
@@ -25,7 +37,7 @@
             app:cardPreventCornerOverlap="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/tb_back">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -159,46 +171,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/srl" />
 
-        <RadioGroup
-            android:id="@+id/rgs"
+        <Spinner
+            android:id="@+id/spinner_sort"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_search_setting"
+            android:layout_gravity="right"
+            android:layout_marginTop="30sp"
+            android:layout_marginEnd="30sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_search_setting">
-
-            <RadioButton
-                android:id="@+id/rb_sim"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_weight="1"
-                android:buttonTint="#8B8B8B"
-                android:text="유사도순"
-                android:textColor="#8B8B8B"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_search_setting"
-                app:layout_constraintEnd_toStartOf="@+id/rbp"
-                app:layout_constraintTop_toTopOf="@+id/tv_search_setting" />
-
-            <RadioButton
-                android:id="@+id/rbp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_weight="1"
-                android:buttonTint="#8B8B8B"
-                android:text="최저가순"
-                android:textColor="#8B8B8B"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/rb_sim"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/rb_sim" />
-        </RadioGroup>
+            app:layout_constraintTop_toBottomOf="@+id/cv_search" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
