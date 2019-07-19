@@ -105,19 +105,21 @@ public class MainFragment extends Fragment {
             Intent intent = new Intent(getContext(), SearchActivity.class);
             startActivity(intent);
         });
-        binding.btnMap.setOnClickListener(v -> {
+        binding.ivMap.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), MapActivity.class);
             startActivity(intent);
         });
 
         binding.quickFloatingActionMenuAdd.setOnClickListener(v -> {
             Toast.makeText(getContext(), "첫번째 선택", Toast.LENGTH_SHORT).show();
+            binding.quickFloatingActionMenu.close(true);
 
         });
 
         binding.quickFloatingActionVoice.setOnClickListener(v -> {
             promptSpeechInput();
             Toast.makeText(getContext(), "음성 선택", Toast.LENGTH_SHORT).show();
+            binding.quickFloatingActionMenu.close(true);
         });
 
         binding.tvSupportDay.setText(getToday());
