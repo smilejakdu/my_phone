@@ -16,7 +16,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -43,6 +42,7 @@ public class PhoneBookFragment extends Fragment {
     private FragmentPhonebookBinding binding;
     PhonebookAdapter adapter;
     ArrayList<AddressData> contactlist = new ArrayList<>();
+
     public PhoneBookFragment() {
     }
 
@@ -70,8 +70,9 @@ public class PhoneBookFragment extends Fragment {
     private void initCollapsingToolbar(CollapsingToolbarLayout ctl) {
         ctl.setTitle("");
         binding.appbar.setExpanded(true);
+        String color_change = "연락처개수 : " + getContactList().size();
         ctl.setTitle("연락처개수 : " + getContactList().size());
-        ctl.setCollapsedTitleTextAppearance(R.style.coll_basic_title);
+        ctl.setCollapsedTitleTextAppearance(R.style.coll_main_basic_title);// coll_basic_title 이것도 한번 해보기
         ctl.setExpandedTitleTextAppearance(R.style.coll_expand_title);
 
     }
@@ -132,13 +133,12 @@ public class PhoneBookFragment extends Fragment {
             AddressData acontact = new AddressData();
             acontact.setPhotoid(contactCursor.getLong(0));
             acontact.setPhonenum(phonenumber);
-            Log.d("qweqwe", "getContactList: " +contactCursor.getString(2));
+            Log.d("qweqwe", "getContactList: " + contactCursor.getString(2));
             acontact.setName(contactCursor.getString(2));
             contactlist.add(acontact);
         } while (contactCursor.moveToNext());
         return contactlist;
     }
-
 
 
     @Override

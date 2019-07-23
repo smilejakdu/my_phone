@@ -1,4 +1,4 @@
-package com.example.sh.androidregisterandlogin;
+package com.example.sh.androidregisterandlogin.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.webkit.WebSettings;
 import android.webkit.WebViewClient;
 
+import com.example.sh.androidregisterandlogin.R;
 import com.example.sh.androidregisterandlogin.databinding.ActivityMapBinding;
 
 public class MapActivity extends AppCompatActivity {
@@ -25,6 +26,5 @@ public class MapActivity extends AppCompatActivity {
 
         // Force links and redirects to open in the WebView instead of in a browser
         binding.wvShow.setWebViewClient(new WebViewClient());
-
     }
 }

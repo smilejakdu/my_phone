@@ -1,4 +1,4 @@
-package com.example.sh.androidregisterandlogin;
+package com.example.sh.androidregisterandlogin.Activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -22,6 +22,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.example.sh.androidregisterandlogin.R;
 import com.example.sh.androidregisterandlogin.SearchUtil.CustomLayoutManager;
 import com.example.sh.androidregisterandlogin.SearchUtil.Items;
 import com.example.sh.androidregisterandlogin.SearchUtil.NaverShoppingSearchService;

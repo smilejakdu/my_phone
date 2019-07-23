@@ -1,10 +1,11 @@
 package com.example.sh.androidregisterandlogin.TotalHome.Frags;
 
-import android.app.ProgressDialog;
+import android.animation.ObjectAnimator;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -33,9 +35,10 @@ import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.sh.androidregisterandlogin.MapActivity;
+import com.example.sh.androidregisterandlogin.Activity.MapActivity;
+import com.example.sh.androidregisterandlogin.Activity.SearchActivity;
+import com.example.sh.androidregisterandlogin.Activity.SupportWebActivity;
 import com.example.sh.androidregisterandlogin.R;
-import com.example.sh.androidregisterandlogin.SearchActivity;
 import com.example.sh.androidregisterandlogin.TotalApp.UserAppsActivity;
 import com.example.sh.androidregisterandlogin.TotalBattery.BatteryActivity;
 import com.example.sh.androidregisterandlogin.TotalHome.Adapters.MainAdapter;
@@ -73,7 +76,6 @@ public class MainFragment extends Fragment {
     Date mDate;
 
     private ArrayList<PhonePriceDataItem> phonePriceList = new ArrayList();
-    private ProgressDialog progressDialog;
 
     public MainFragment() {
 
@@ -101,6 +103,7 @@ public class MainFragment extends Fragment {
 
         ClickFunction();
         binding.tvSupportDay.setText(getToday());
+
 
     }
 
@@ -134,6 +137,11 @@ public class MainFragment extends Fragment {
             Toast.makeText(getContext(), "음성 선택", Toast.LENGTH_SHORT).show();
             binding.quickFloatingActionMenu.close(true);
         });
+        binding.rcvSearch.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), SupportWebActivity.class);
+            startActivity(intent);
+
+        });
     }
 
 
@@ -142,9 +150,14 @@ public class MainFragment extends Fragment {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressDialog = new ProgressDialog(getContext());
-            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-            progressDialog.show();
+            // 색을 바꿔주는 코드
+            int c = getResources().getColor(R.color.colorGrin);
+            binding.pbSupportMoney.getIndeterminateDrawable().setColorFilter(c, PorterDuff.Mode.MULTIPLY);
+//          ProgressBar start
+            ObjectAnimator anim = ObjectAnimator.ofInt(binding.pbSupportMoney, "progress", 0, 100);
+            anim.setDuration(15000);
+            anim.setInterpolator(new DecelerateInterpolator());
+            anim.start();
 
         }
 
@@ -181,7 +194,8 @@ public class MainFragment extends Fragment {
             binding.rcvSearch.setLayoutManager(linearLayoutManager);
             binding.rcvSearch.setHasFixedSize(true);
             binding.rcvSearch.setAdapter(phonePriceAdapter);
-            progressDialog.dismiss();
+//          ProgressBar Gone
+            binding.pbSupportMoney.setVisibility(View.GONE);
 
         }
     }

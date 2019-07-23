@@ -1,12 +1,12 @@
-package com.example.sh.androidregisterandlogin;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
+package com.example.sh.androidregisterandlogin.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.sh.androidregisterandlogin.R;
 import com.example.sh.androidregisterandlogin.TotalHome.HomeActivity;
 
 public class IntroActivity extends AppCompatActivity {

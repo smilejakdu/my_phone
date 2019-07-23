@@ -105,6 +105,7 @@
 
                 </LinearLayout>
 
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rcv_search"
                     android:layout_width="match_parent"
@@ -216,5 +217,15 @@
 
         </com.github.clans.fab.FloatingActionMenu>
 
+        <ProgressBar
+            android:id="@+id/pb_support_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:indeterminate="false"
+            android:max="48"
+            android:progress="1"
+            android:progressDrawable="@drawable/circular_progressbar" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
