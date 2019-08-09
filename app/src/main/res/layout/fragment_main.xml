@@ -59,6 +59,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="15dp"
+                        android:layout_weight="1"
                         android:gravity="start"
                         android:text="Support Money"
                         android:textColor="@color/colorBlack"
@@ -71,6 +72,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="15dp"
+                        android:layout_weight="1"
                         android:gravity="start"
                         android:text="Support_day"
                         android:textColor="@color/colorBlack"
@@ -80,9 +82,10 @@
 
                     <LinearLayout
                         android:id="@+id/ll_search_move"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginRight="10dp"
+                        android:layout_weight="1"
                         android:gravity="right|center"
                         android:orientation="vertical">
 
@@ -150,8 +153,9 @@
 
                 <LinearLayout
                     android:id="@+id/ll_map"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginTop="30sp"
                     android:layout_marginBottom="30sp"
                     android:gravity="center"

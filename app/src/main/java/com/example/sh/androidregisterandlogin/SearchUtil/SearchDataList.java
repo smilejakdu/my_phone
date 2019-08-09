@@ -4,10 +4,6 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-/**
- * Created by XPS on 2017-12-02.
- */
-
 public class SearchDataList {
 
     @SerializedName("items")

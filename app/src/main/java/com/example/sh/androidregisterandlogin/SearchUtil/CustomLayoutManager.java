@@ -6,9 +6,6 @@ import android.util.Log;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-/**
- * Created by XPS on 2017-12-02.
- */
 //Index Out Of Exception Error를 막기 위해 만든 커스텀 레이아웃 매니저
 public class CustomLayoutManager extends LinearLayoutManager {
 

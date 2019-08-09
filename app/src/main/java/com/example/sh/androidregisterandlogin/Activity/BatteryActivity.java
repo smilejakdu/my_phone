@@ -1,4 +1,4 @@
-package com.example.sh.androidregisterandlogin.TotalBattery;
+package com.example.sh.androidregisterandlogin.Activity;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

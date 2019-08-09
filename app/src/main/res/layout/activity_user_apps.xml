@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:background="@color/colorWhite"
         android:orientation="vertical"
-        tools:context=".TotalApp.UserAppsActivity">
+        tools:context=".Activity.TotalApp.UserAppsActivity">
 
         <!--android:background="@color/colorWhite"--><!---->
         <TextView

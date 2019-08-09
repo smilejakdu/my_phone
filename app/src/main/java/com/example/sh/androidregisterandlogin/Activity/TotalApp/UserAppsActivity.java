@@ -1,11 +1,12 @@
-package com.example.sh.androidregisterandlogin.TotalApp;
+package com.example.sh.androidregisterandlogin.Activity.TotalApp;
 
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
+
 import androidx.databinding.DataBindingUtil;
+
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.sh.androidregisterandlogin.R;
 import com.example.sh.androidregisterandlogin.TotalDataItem.AppDataItem;
 import com.example.sh.androidregisterandlogin.databinding.ActivityUserAppsBinding;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,14 +29,14 @@ public class UserAppsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding=DataBindingUtil.setContentView(this,R.layout.activity_user_apps);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_user_apps);
         initRv(binding.rcvApps);
         String size = Integer.toString(getInstalledApps().size());
         binding.tvAppCount.setText("어플개수 : " + size);
     }
 
     private void initRv(RecyclerView rv) {
-        adapter = new AppAdapter(getInstalledApps(), this);
+        adapter = new AppAdapter(getInstalledApps());
         rv.setAdapter(adapter);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         rv.setLayoutManager(layoutManager);
@@ -47,10 +49,8 @@ public class UserAppsActivity extends AppCompatActivity {
 //            public void onItemClick(AdapterView<?> adapterView, View view, final int i, long id) {
 //                final AlertDialog.Builder builder = new AlertDialog.Builder(UserAppsActivity.this);
 ////                Alert dialog builder
-//                builder.setTitle("메뉴").setIcon(R.drawable.app); //여기서 다이얼 로그 색깔을 바꾸고 싶은데 어떻게 해야할까 ??
-////                set title
+//                builder.setTitle("메뉴").setIcon(R.drawable.app);
 //                String[] options = {"앱실행", "앱정보", "앱삭제"};
-////                set options
 //                builder.setItems(options, new DialogInterface.OnClickListener() {
 //                    @Override
 //                    public void onClick(DialogInterface dialog, int optionsNumber) {
@@ -106,7 +106,6 @@ public class UserAppsActivity extends AppCompatActivity {
                 apps.add(new AppDataItem(appName, icon, packages, version));
             }
         }
-
         return apps;
     }
 

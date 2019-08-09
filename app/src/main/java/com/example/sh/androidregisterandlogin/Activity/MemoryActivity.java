@@ -1,4 +1,4 @@
-package com.example.sh.androidregisterandlogin.TotalMemory;
+package com.example.sh.androidregisterandlogin.Activity;
 
 import android.app.ActivityManager;
 import android.os.Bundle;

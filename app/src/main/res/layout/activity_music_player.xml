@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         android:background="@color/colorWhite"
         android:orientation="vertical"
-        tools:context=".TotalMusic.MusicPlayer">
+        tools:context=".Activity.TotalMusic.MusicPlayer">
 
         <TextView
             android:id="@+id/music_title"

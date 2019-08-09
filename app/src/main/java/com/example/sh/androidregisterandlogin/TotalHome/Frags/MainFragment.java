@@ -37,15 +37,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sh.androidregisterandlogin.Activity.MapActivity;
 import com.example.sh.androidregisterandlogin.Activity.SearchActivity;
-import com.example.sh.androidregisterandlogin.Activity.SupportWebActivity;
 import com.example.sh.androidregisterandlogin.R;
-import com.example.sh.androidregisterandlogin.TotalApp.UserAppsActivity;
-import com.example.sh.androidregisterandlogin.TotalBattery.BatteryActivity;
+import com.example.sh.androidregisterandlogin.Activity.TotalApp.UserAppsActivity;
+import com.example.sh.androidregisterandlogin.Activity.BatteryActivity;
 import com.example.sh.androidregisterandlogin.TotalHome.Adapters.MainAdapter;
 import com.example.sh.androidregisterandlogin.TotalHome.Adapters.PhonePriceAdapter;
 import com.example.sh.androidregisterandlogin.TotalHome.Datas.MainDataItem;
 import com.example.sh.androidregisterandlogin.TotalHome.Datas.PhonePriceDataItem;
-import com.example.sh.androidregisterandlogin.TotalMusic.TotalMusicActivity;
+import com.example.sh.androidregisterandlogin.Activity.TotalMusic.TotalMusicActivity;
 import com.example.sh.androidregisterandlogin.databinding.FragmentMainBinding;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 
@@ -104,9 +103,7 @@ public class MainFragment extends Fragment {
         ClickFunction();
         binding.tvSupportDay.setText(getToday());
 
-
     }
-
 
     private void initRcv(RecyclerView rcv) {
         adapter = new MainAdapter(getModels());
@@ -136,11 +133,6 @@ public class MainFragment extends Fragment {
             promptSpeechInput();
             Toast.makeText(getContext(), "음성 선택", Toast.LENGTH_SHORT).show();
             binding.quickFloatingActionMenu.close(true);
-        });
-        binding.rcvSearch.setOnClickListener(v -> {
-            Intent intent = new Intent(getContext(), SupportWebActivity.class);
-            startActivity(intent);
-
         });
     }
 

@@ -1,4 +1,4 @@
-package com.example.sh.androidregisterandlogin.TotalMusic;
+package com.example.sh.androidregisterandlogin.Activity.TotalMusic;
 
 import android.Manifest;
 import android.content.ContentUris;

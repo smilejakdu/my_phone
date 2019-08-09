@@ -1,4 +1,4 @@
-package com.example.sh.androidregisterandlogin.TotalPhoneInfo;
+package com.example.sh.androidregisterandlogin.Activity.TotalPhoneInfo;
 
 import android.content.Context;
 

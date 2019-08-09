@@ -1,5 +1,6 @@
 package com.example.sh.androidregisterandlogin.TotalHome.Adapters;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -7,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.example.sh.androidregisterandlogin.TotalHome.Datas.AddressData;
+import com.example.sh.androidregisterandlogin.Activity.SupportWebActivity;
 import com.example.sh.androidregisterandlogin.TotalHome.Datas.PhonePriceDataItem;
 import com.example.sh.androidregisterandlogin.databinding.ItemPhonepriceBinding;
 import com.example.sh.androidregisterandlogin.util.BaseRecyclerViewAdapter;
@@ -24,6 +25,10 @@ public class PhonePriceAdapter extends BaseRecyclerViewAdapter<PhonePriceDataIte
     public PhonePriceAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         ItemPhonepriceBinding binding = ItemPhonepriceBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
         final ViewHolder viewHolder = new ViewHolder(binding);
+        viewHolder.binding.clSupportInfo.setOnClickListener(v -> {
+            Intent intent = new Intent(parent.getContext(), SupportWebActivity.class);
+            parent.getContext().startActivity(intent);
+        });
         return viewHolder;
     }
 
@@ -39,6 +44,7 @@ public class PhonePriceAdapter extends BaseRecyclerViewAdapter<PhonePriceDataIte
         Glide.with(holder.binding.getRoot()).load(getItem(position).getImg_url())
                 .apply(circle)
                 .into(holder.binding.ivImagePhone);
+
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

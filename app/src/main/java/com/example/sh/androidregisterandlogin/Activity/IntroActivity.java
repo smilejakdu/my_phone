@@ -10,7 +10,6 @@ import com.example.sh.androidregisterandlogin.R;
 import com.example.sh.androidregisterandlogin.TotalHome.HomeActivity;
 
 public class IntroActivity extends AppCompatActivity {
-
     private Handler handler;
 
     @Override

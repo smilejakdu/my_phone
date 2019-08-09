@@ -2,7 +2,6 @@ package com.example.sh.androidregisterandlogin.Activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -23,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.sh.androidregisterandlogin.R;
+//import com.example.sh.androidregisterandlogin.SearchUtil.CustomLayoutManager;
 import com.example.sh.androidregisterandlogin.SearchUtil.CustomLayoutManager;
 import com.example.sh.androidregisterandlogin.SearchUtil.Items;
 import com.example.sh.androidregisterandlogin.SearchUtil.NaverShoppingSearchService;
@@ -52,15 +52,9 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     String queryString;
     List<Items> itemList;
     ListTypeAdapter listTypeAdapter;
-    CustomLayoutManager customLayoutManager;
-    SQLiteDatabase database;
+//    CustomLayoutManager customLayoutManager;
 
-    long pressedTime = 0;
-    long seconds = 0;
-    int lprice;
-    int hprice;
-    int displayValue = 100;
-    int startValue = 1;
+    int lprice, displayValue = 100, startValue = 1;
     String sortType = "sim";
     String select_item;
     ArrayList arraylist = new ArrayList();
@@ -75,12 +69,11 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         setTitle("U&Soft Company");
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        customLayoutManager = new CustomLayoutManager(this);
+//        customLayoutManager = new CustomLayoutManager(this);
         itemList = new ArrayList<>();
-//        listTypeAdapter = new ListTypeAdapter(this, itemList, Glide.with(this));
         listTypeAdapter = new ListTypeAdapter(itemList);
         binding.rcv.setAdapter(listTypeAdapter);
-        binding.rcv.setLayoutManager(customLayoutManager);
+//        binding.rcv.setLayoutManager(customLayoutManager);
         binding.rcv.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
@@ -92,16 +85,16 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 Log.e("count", recyclerView.getLayoutManager().getItemCount() + "");
-                Log.e("lastVisible", customLayoutManager.findLastVisibleItemPosition() + "");
-                int lastVisible = customLayoutManager.findLastVisibleItemPosition();
+//                Log.e("lastVisible", customLayoutManager.findLastVisibleItemPosition() + "");
+//                int lastVisible = customLayoutManager.findLastVisibleItemPosition();
                 /*if(lastVisible +1 == itemList.size()){
                     startValue = startValue + 10;
                     setRetrofit(queryString);
                 }*/
-                if (lastVisible == itemList.size() - 1) {
-                    startValue = startValue + 100;
-                    setRetrofit(queryString);
-                }
+//                if (lastVisible == itemList.size() - 1) {
+//                    startValue = startValue + 100;
+//                    setRetrofit(queryString);
+//                }
             }
         });
         search_word_play();
@@ -265,8 +258,8 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                     Toast.makeText(SearchActivity.this, "검색 결과가 없습니다.", Toast.LENGTH_SHORT).show();
                 }
                 binding.tvLowPrice.setVisibility(View.VISIBLE);
-                Log.e("listItemPositon",
-                        customLayoutManager.findLastCompletelyVisibleItemPosition() + "");
+//                Log.e("listItemPositon",
+//                        customLayoutManager.findLastCompletelyVisibleItemPosition() + "");
                 binding.pb.setVisibility(View.INVISIBLE);
             }
         });
