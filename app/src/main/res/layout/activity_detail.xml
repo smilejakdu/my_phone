@@ -116,11 +116,7 @@
                 android:textAlignment="center"
                 android:textColor="#ffffff"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/btn_go_buy_favorite"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent" />
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btn_go_buy_favorite"
@@ -132,11 +128,7 @@
                 android:text="사러가기"
                 android:textColor="#ffffff"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent" />
+                android:textStyle="bold" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

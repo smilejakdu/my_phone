@@ -13,5 +13,8 @@ public interface NaverShoppingSearchService {
             "X-Naver-Client-Secret: sMgN4zxD2S"
     })
     @GET("shop")
-    Observable<SearchDataList> getSearchDataList(@Query("query") String queryKey, @Query("display") int displayValue, @Query("start") int start, @Query("sort") String sortType);
+    Observable<SearchDataList> getSearchDataList(@Query("query") String queryKey,
+                                                 @Query("display") int displayValue,
+                                                 @Query("start") int start,
+                                                 @Query("sort") String sortType);
 }

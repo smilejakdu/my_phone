@@ -16,11 +16,11 @@ import com.example.sh.androidregisterandlogin.util.BaseRecyclerViewAdapter;
 
 import java.util.List;
 
-public class ListTypeAdapter extends BaseRecyclerViewAdapter<Items, ListTypeAdapter.ViewHolder> {
+public class RcvTypeAdapter extends BaseRecyclerViewAdapter<Items, RcvTypeAdapter.ViewHolder> {
 
     Uri uri = null;
 
-    public ListTypeAdapter(List<Items> dataSet) {
+    public RcvTypeAdapter(List<Items> dataSet) {
         super(dataSet);
     }
 

@@ -22,12 +22,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.sh.androidregisterandlogin.R;
-//import com.example.sh.androidregisterandlogin.SearchUtil.CustomLayoutManager;
 import com.example.sh.androidregisterandlogin.SearchUtil.CustomLayoutManager;
 import com.example.sh.androidregisterandlogin.SearchUtil.Items;
 import com.example.sh.androidregisterandlogin.SearchUtil.NaverShoppingSearchService;
 import com.example.sh.androidregisterandlogin.SearchUtil.SearchDataList;
-import com.example.sh.androidregisterandlogin.TotalHome.Adapters.ListTypeAdapter;
+import com.example.sh.androidregisterandlogin.TotalHome.Adapters.RcvTypeAdapter;
 import com.example.sh.androidregisterandlogin.databinding.ActivitySearchBinding;
 
 import java.util.ArrayList;
@@ -51,8 +50,8 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
     String queryString;
     List<Items> itemList;
-    ListTypeAdapter listTypeAdapter;
-//    CustomLayoutManager customLayoutManager;
+    RcvTypeAdapter rcvTypeAdapter;
+    CustomLayoutManager customLayoutManager;
 
     int lprice, displayValue = 100, startValue = 1;
     String sortType = "sim";
@@ -69,11 +68,18 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         setTitle("U&Soft Company");
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-//        customLayoutManager = new CustomLayoutManager(this);
+        InitRcv();
+        search_word_play();
+        spinnerSort();
+
+    }
+
+    private void InitRcv() {
+        customLayoutManager = new CustomLayoutManager(this);
         itemList = new ArrayList<>();
-        listTypeAdapter = new ListTypeAdapter(itemList);
-        binding.rcv.setAdapter(listTypeAdapter);
-//        binding.rcv.setLayoutManager(customLayoutManager);
+        rcvTypeAdapter = new RcvTypeAdapter(itemList);
+        binding.rcv.setAdapter(rcvTypeAdapter);
+        binding.rcv.setLayoutManager(customLayoutManager);
         binding.rcv.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
@@ -86,21 +92,17 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                 super.onScrolled(recyclerView, dx, dy);
                 Log.e("count", recyclerView.getLayoutManager().getItemCount() + "");
 //                Log.e("lastVisible", customLayoutManager.findLastVisibleItemPosition() + "");
-//                int lastVisible = customLayoutManager.findLastVisibleItemPosition();
-                /*if(lastVisible +1 == itemList.size()){
+                int lastVisible = customLayoutManager.findLastVisibleItemPosition();
+                if (lastVisible + 1 == itemList.size()) {
                     startValue = startValue + 10;
                     setRetrofit(queryString);
-                }*/
-//                if (lastVisible == itemList.size() - 1) {
-//                    startValue = startValue + 100;
-//                    setRetrofit(queryString);
-//                }
+                }
+                if (lastVisible == itemList.size() - 1) {
+                    startValue = startValue + 100;
+                    setRetrofit(queryString);
+                }
             }
         });
-        search_word_play();
-        spinnerSort();
-
-
     }
 
     private void search_word_play() {
@@ -241,7 +243,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
             @Override
             public void onComplete() {
-                listTypeAdapter.notifyDataSetChanged();
+                rcvTypeAdapter.notifyDataSetChanged();
                 binding.srl.setRefreshing(false);
                 binding.srl.setEnabled(true);
                 binding.pb.setVisibility(View.INVISIBLE);
@@ -305,7 +307,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         } else {
             if (networkCheck()) {
                 clearData();
-                listTypeAdapter.notifyDataSetChanged();
+                rcvTypeAdapter.notifyDataSetChanged();
                 setRetrofit(queryString);
                 binding.pb.setVisibility(View.GONE);
             } else {

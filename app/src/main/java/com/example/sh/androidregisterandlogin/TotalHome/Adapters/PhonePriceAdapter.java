@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SnapHelper;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -16,6 +18,10 @@ import com.example.sh.androidregisterandlogin.util.BaseRecyclerViewAdapter;
 import java.util.List;
 
 public class PhonePriceAdapter extends BaseRecyclerViewAdapter<PhonePriceDataItem, PhonePriceAdapter.ViewHolder> {
+
+    SnapHelper snapHelper;
+
+
 
     public PhonePriceAdapter(List<PhonePriceDataItem> dataSet) {
         super(dataSet);

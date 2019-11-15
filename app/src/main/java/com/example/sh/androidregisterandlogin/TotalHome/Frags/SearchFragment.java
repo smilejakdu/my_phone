@@ -36,6 +36,7 @@ public class SearchFragment extends Fragment implements SwipeRefreshLayout.OnRef
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_search, container, false);
+
         Glide.with(getContext())
                 .load(R.drawable.gif_image)
                 .into(binding.ivDelay);

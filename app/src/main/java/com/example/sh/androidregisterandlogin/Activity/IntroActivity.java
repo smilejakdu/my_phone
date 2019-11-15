@@ -17,7 +17,6 @@ public class IntroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
         handler = new Handler();
-
         handler.postDelayed(() -> {
             Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(intent);
